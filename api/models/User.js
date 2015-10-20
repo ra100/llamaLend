@@ -32,24 +32,24 @@ module.exports = {
 
     // images user uploaded
     images: {
-      collection: 'image',
+      collection: 'Image',
       via: 'owner'
     },
 
     // only one avatar for user
     avatar: {
-      model: 'image'
+      model: 'Image'
     },
 
     // tools user owns
     tools: {
-      collection: 'tool',
+      collection: 'Tool',
       via: 'owner'
     },
 
     // which tools user has now
     has: {
-      collection: 'tool',
+      collection: 'Tool',
       via: 'location'
     }
   },

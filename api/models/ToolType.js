@@ -21,7 +21,7 @@ module.exports = {
     },
 
     tools: {
-      collection: 'tool',
+      collection: 'Tool',
       via: 'type'
     }
 

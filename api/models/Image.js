@@ -9,13 +9,15 @@ module.exports = {
 
   attributes: {
     owner: {
-      model: 'user'
+      model: 'User'
     },
+
     tool: {
-      model: 'tool'
+      model: 'Tool'
     },
+
     avatar: {
-      model: 'user'
+      model: 'User'
     }
   }
 };

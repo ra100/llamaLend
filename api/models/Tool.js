@@ -17,16 +17,16 @@ module.exports = {
     },
 
     status: {
-      model: 'status'
+      model: 'ToolStatus'
     },
 
     images: {
-      collection: 'image',
+      collection: 'Image',
       via: 'tool'
     },
 
     type: {
-      model: 'toolType'
+      model: 'ToolType'
     },
 
     owner: {
