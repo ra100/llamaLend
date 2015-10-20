@@ -18,7 +18,12 @@ module.exports = {
      ***************************************************************************/
 
     models: {
-        connection: 'defaultMongodbServer'
+        connection: 'defaultMongodbServer',
+        migrate: 'alter'
     },
+
+    session: {
+        db: 'llamaDev',
+    }
 
 };
