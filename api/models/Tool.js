@@ -38,6 +38,11 @@ module.exports = {
     // who has the tool right now
     location: {
       model: 'user'
+    },
+
+    history: {
+      collection: 'History',
+      via: 'tool'
     }
   }
 };
