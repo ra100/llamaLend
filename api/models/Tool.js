@@ -9,7 +9,8 @@ module.exports = {
 
   attributes: {
     name: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
 
     description: {
@@ -30,7 +31,8 @@ module.exports = {
     },
 
     owner: {
-      model: 'user'
+      model: 'user',
+      required: true
     },
 
     // who has the tool right now

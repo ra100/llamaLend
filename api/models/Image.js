@@ -9,7 +9,8 @@ module.exports = {
 
   attributes: {
     owner: {
-      model: 'User'
+      model: 'User',
+      required: true
     },
 
     tool: {

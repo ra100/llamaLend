@@ -11,7 +11,8 @@ module.exports = {
 
     // display name
     name: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
 
     // login name
@@ -57,7 +58,7 @@ module.exports = {
 
   // Lifecycle Callbacks
   beforeCreate: function (values, cb) {
-
+    var bcrypt = require('bcrypt');
     // Encrypt password
     bcrypt.hash(values.password, 10, function (err, hash) {
       if (err) return cb(err);
