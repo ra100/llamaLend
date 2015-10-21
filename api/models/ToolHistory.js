@@ -13,6 +13,10 @@ module.exports = {
           enum: ['borrow', 'return', 'give', 'lose']
       },
 
+      message: {
+          type: 'string'
+      },
+
       tool: {
           model: 'Tool'
       },

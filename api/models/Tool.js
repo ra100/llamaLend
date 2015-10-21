@@ -41,7 +41,7 @@ module.exports = {
     },
 
     history: {
-      collection: 'History',
+      collection: 'ToolHistory',
       via: 'tool'
     }
   }
