@@ -10,9 +10,29 @@ module.exports = {
 
   attributes: require('waterlock').models.auth.attributes({
 
-    /* e.g.
-    nickname: 'string'
-    */
+    firstName: {
+      type: 'string'
+    },
+    lastName: {
+      type: 'string'
+    },
+    gender: {
+      type: 'string'
+    },
+    timezone: {
+      type: 'string'
+    },
+    email: {
+      type: 'email',
+      unique: true
+    },
+    password: {
+      type: 'STRING',
+      minLength: 8
+    },
+    resetToken: {
+      model: 'resetToken'
+    }
 
   }),
 

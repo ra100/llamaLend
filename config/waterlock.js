@@ -1,4 +1,3 @@
-
 /**
  * waterlock
  *
@@ -21,14 +20,13 @@ module.exports.waterlock = {
   // chosen auth method(s) you will need to see the individual module's README
   // file for more information on the attributes necessary. This is an example
   // of the local authentication method with password reset tokens disabled.
-  authMethod: [
-    {
-      name:'waterlock-local-auth',
-      passwordReset:{
+  authMethod: [{
+      name: 'waterlock-local-auth',
+      passwordReset: {
         tokens: false,
         mail: {
           protocol: 'SMTP',
-          options:{
+          options: {
             service: 'Gmail',
             auth: {
               user: 'gmail.user@gmail.com',
@@ -39,25 +37,53 @@ module.exports.waterlock = {
           subject: 'Your password reset!',
           forwardUrl: 'http://localhost:1337'
         },
-        template:{
+        template: {
           file: '../views/email.jade',
-          vars:{}
+          vars: {}
         }
       },
       createOnNotFound: true
+    },
+    {
+      name: 'waterlock-google-auth',
+      clientId: 'CLIENT_ID',
+      clientSecret: 'CLIENT_SECRET',
+      //   allow: ['DOMAIN', 'USER@DOMAIN'],
+      //   redirectUri: 'redirectUri'
+      fieldMap: {
+        // <model-field>: <google-field>,
+        'firstName': 'given_name',
+        'lastName': 'family_name',
+        'gender': 'gender'
+      }
+    },
+    {
+      name: "waterlock-facebook-auth",
+      appId: "your-app-id",
+      appSecret: "your-app-secret",
+      //   redirectUri: 'redirectUri'
+      fieldMap: {
+        // <model-field>: <facebook-field>,
+        'firstName': 'first_name',
+        'lastName': 'last_name',
+        'gender': 'gender',
+        'timezone': 'timezone'
+      }
     }
   ],
+
+  pluralizeEndpoints: true,
 
   // JSON Web Tokens
   //
   // this provides waterlock with basic information to build your tokens,
   // these tokens are used for authentication, password reset,
   // and anything else you can imagine
-  jsonWebTokens:{
+  jsonWebTokens: {
 
     // CHANGE THIS SECRET
     secret: 'this is my secret',
-    expiry:{
+    expiry: {
       unit: 'days',
       length: '7'
     },
@@ -91,7 +117,7 @@ module.exports.waterlock = {
   //
   // Lets waterlock know how to handle different login/logout
   // attempt outcomes.
-  postActions:{
+  postActions: {
 
     // post login event
     login: {
@@ -137,23 +163,23 @@ module.exports.waterlock = {
       failure: 'default'
     },
     // post register event
-   register: {
-     // This can be any one of the following
-     //
-     // url - 'http://example.com'
-     // relativePath - '/blog/post'
-     // obj - {controller: 'blog', action: 'post'}
-     // string - 'custom json response string'
-     // default - 'default'
-     success: 'default',
-     // This can be any one of the following
-     //
-     // url - 'http://example.com'
-     // relativePath - '/blog/post'
-     // obj - {controller: 'blog', action: 'post'}
-     // string - 'custom json response string'
-     // default - 'default'
-     failure: 'default'
-   }
+    register: {
+      // This can be any one of the following
+      //
+      // url - 'http://example.com'
+      // relativePath - '/blog/post'
+      // obj - {controller: 'blog', action: 'post'}
+      // string - 'custom json response string'
+      // default - 'default'
+      success: 'default',
+      // This can be any one of the following
+      //
+      // url - 'http://example.com'
+      // relativePath - '/blog/post'
+      // obj - {controller: 'blog', action: 'post'}
+      // string - 'custom json response string'
+      // default - 'default'
+      failure: 'default'
+    }
   }
 };
