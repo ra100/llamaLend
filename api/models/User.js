@@ -23,14 +23,12 @@ module.exports = {
         required: true
       },
 
-      // login name
-      login: {
-        type: 'string'
+      firstName: {
+          type: 'string'
       },
 
-      // hashed password
-      password: {
-        type: 'string'
+      lastName: {
+          type: 'string'
       },
 
       // user email
@@ -64,6 +62,9 @@ module.exports = {
     },
   }),
 
-  beforeCreate: require('waterlock').models.user.beforeCreate,
+  beforeCreate: function(values) {
+      require('waterlock').models.user.beforeCreate(values);
+      next();
+  },
   beforeUpdate: require('waterlock').models.user.beforeUpdate
 };
