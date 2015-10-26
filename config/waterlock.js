@@ -86,7 +86,7 @@ module.exports.waterlock = {
       unit: 'days',
       length: '7'
     },
-    audience: 'llamaLend',
+    audience: process.env.APP_NAME,
     subject: 'subject',
 
     // tracks jwt usage if set to true
