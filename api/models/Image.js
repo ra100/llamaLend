@@ -8,6 +8,12 @@
 module.exports = {
 
   attributes: {
+    id: {
+      type: 'integer',
+      unique: true,
+      primaryKey: true
+    },
+
     owner: {
       model: 'User',
       required: true

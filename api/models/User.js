@@ -11,6 +11,11 @@ module.exports = {
   attributes: require('waterlock').models.user.attributes({
 
     attributes: {
+      id: {
+        type: 'integer',
+        unique: true,
+        primaryKey: true
+      },
 
       // display name
       name: {

@@ -12,7 +12,7 @@ module.exports.waterlock = {
   //
   // used by auth methods for callback URI's using oauth and for password
   // reset links.
-  baseUrl: 'http://localhost:1337',
+  baseUrl: process.env.BASE_URL || 'http://localhost:1337',
 
   // Auth Method(s)
   //
@@ -29,13 +29,13 @@ module.exports.waterlock = {
           options: {
             service: 'Gmail',
             auth: {
-              user: 'gmail.user@gmail.com',
-              pass: 'userpass'
+              user: process.env.GMAIL_EMAIL,
+              pass: process.env.GMAIL_PASS
             }
           },
-          from: 'no-reply@domain.com',
+          from: process.env.GMAIL_EMAIL,
           subject: 'Your password reset!',
-          forwardUrl: 'http://localhost:1337'
+          forwardUrl: process.env.BASE_URL
         },
         template: {
           file: '../views/email.jade',
@@ -46,28 +46,27 @@ module.exports.waterlock = {
     },
     {
       name: 'waterlock-google-auth',
-      clientId: 'CLIENT_ID',
-      clientSecret: 'CLIENT_SECRET',
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       //   allow: ['DOMAIN', 'USER@DOMAIN'],
       //   redirectUri: 'redirectUri'
       fieldMap: {
         // <model-field>: <google-field>,
         'firstName': 'given_name',
         'lastName': 'family_name',
-        'gender': 'gender'
+        'email': 'email'
       }
     },
     {
       name: "waterlock-facebook-auth",
-      appId: "your-app-id",
-      appSecret: "your-app-secret",
+      appId: process.env.FACEBOOK_APP_ID,
+      appSecret: process.env.FACEBOOK_APP_SECRET,
       //   redirectUri: 'redirectUri'
       fieldMap: {
         // <model-field>: <facebook-field>,
         'firstName': 'first_name',
         'lastName': 'last_name',
-        'gender': 'gender',
-        'timezone': 'timezone'
+        'email': 'email'
       }
     }
   ],
@@ -82,7 +81,7 @@ module.exports.waterlock = {
   jsonWebTokens: {
 
     // CHANGE THIS SECRET
-    secret: 'this is my secret',
+    secret: process.env.JWT_SECRET,
     expiry: {
       unit: 'days',
       length: '7'
@@ -110,7 +109,7 @@ module.exports.waterlock = {
     // configure whether or not to include
     // the user in the respnse - this is useful if
     // JWT is the default response for succesfull login
-    includeUserInJwtResponse: false
+    includeUserInJwtResponse: true
   },
 
   // Post Actions
