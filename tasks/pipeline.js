@@ -8,6 +8,12 @@
  * for matching multiple files, and the ! prefix for excluding files.)
  */
 
+// BROWSERIFY main file path
+// Browserify task work before copying the files in the .tmp folder
+// so the path sould be something like .tmp/public/js/app.js
+// just change assets/ for .tmp/public/ and then the same path as always
+var browserifyMainFile = '.tmp/public/js/app.js';
+
 // Path to public folder
 var tmpPath = '.tmp/public/';
 
@@ -60,9 +66,10 @@ var templateFilesToInject = [
 module.exports.cssFilesToInject = cssFilesToInject.map(transformPath);
 module.exports.jsFilesToInject = jsFilesToInject.map(transformPath);
 module.exports.templateFilesToInject = templateFilesToInject.map(transformPath);
+module.exports.browserifyMainFile = browserifyMainFile;
 
 // Transform paths relative to the "assets" folder to be relative to the public
 // folder, preserving "exclude" operators.
 function transformPath(path) {
-  return (path.substring(0,1) == '!') ? ('!' + tmpPath + path.substring(1)) : (tmpPath + path);
+    return (path.substring(0, 1) == '!') ? ('!' + tmpPath + path.substring(1)) : (tmpPath + path);
 }

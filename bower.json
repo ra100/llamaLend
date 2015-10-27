@@ -23,6 +23,7 @@
   "dependencies": {
     "requirejs": "~2.1.20",
     "requirejsx": "*",
-    "react": "~0.14.0"
+    "react": "~0.14.0",
+    "lodash": "~3.10.1"
   }
 }

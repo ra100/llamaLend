@@ -29,11 +29,11 @@ module.exports = function(grunt) {
 			// (i.e. using <div></div>), there's no need to overwrite `templateSettings.interpolate`.
 
 
-			files: {
-				// e.g.
-				// 'relative/path/from/gruntfile/to/compiled/template/destination'  : ['relative/path/to/sourcefiles/**/*.html']
-				'.tmp/public/jst.js': require('../pipeline').templateFilesToInject
-			}
+			// files: {
+			// 	// e.g.
+			// 	// 'relative/path/from/gruntfile/to/compiled/template/destination'  : ['relative/path/to/sourcefiles/**/*.html']
+			// 	'.tmp/public/jst.js': require('../pipeline').templateFilesToInject
+			// }
 		}
 	});
 

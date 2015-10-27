@@ -479,7 +479,7 @@ var parts=["source","protocol","authority","userInfo","user","password","host","
         // If there's no `window` object, we must be running in Node.js
         // so just require the request module and send the HTTP request that
         // way.
-        var mikealsReq = require('request');
+        /*var mikealsReq = require('request');
         mikealsReq.get(xOriginCookieURL, function(err, httpResponse, body) {
           if (err) {
             consolog(
@@ -489,7 +489,7 @@ var parts=["source","protocol","authority","userInfo","user","password","host","
             return;
           }
           cb();
-        });
+        });*/
 
       })(function goAheadAndActuallyConnect() {
 
