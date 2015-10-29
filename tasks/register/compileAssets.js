@@ -1,12 +1,11 @@
 module.exports = function (grunt) {
 	grunt.registerTask("compileAssets", [
 		"clean:dev",
+		"babelBuild",
 		"jst:dev",
 		"sass:dev",
-		"browserify",
 		"copy:dev",
-		"babelBuild",
-    	"browserify",
+		"browserify",
 		"coffee:dev"
 	]);
 };

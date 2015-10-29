@@ -15,10 +15,11 @@
 module.exports = function (grunt) {
 
     grunt.config.set("watch", {
-        api: {
+        react: {
 
             // API files to watch:
-            files: ["api/**/*"]
+            files: ["api/**/*.jsx"],
+            tasks: ["babelBuild"]
         },
         assets: {
 
@@ -26,7 +27,7 @@ module.exports = function (grunt) {
             files: ["assets/**/*", "tasks/pipeline.js", "!**/node_modules/**"],
 
             // When assets are changed:
-            tasks: ["syncAssets", "linkAssets", "babelBuild", "browserify", "sass"]
+            tasks: ["syncAssets", "linkAssets", "browserify", "sass"]
         }
     });
 

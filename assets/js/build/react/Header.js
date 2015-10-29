@@ -13,9 +13,8 @@ var Header = _react2["default"].createClass({
   displayName: "Header",
 
   render: function render() {
-    return _react2["default"].createElement(AppBar, { title: "Title", iconClassNameRight: "muidocs-icon-navigation-expand-more" });
+    return _react2["default"].createElement(AppBar, { title: "LlamaLend", iconClassNameRight: "muidocs-icon-navigation-expand-more" });
   }
-
 });
 
 module.exports = Header;
