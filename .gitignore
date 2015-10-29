@@ -42,6 +42,7 @@
 config/local.js
 www
 assets/js/build
+assets/js/build/*
 
 
 
