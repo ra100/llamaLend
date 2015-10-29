@@ -1,10 +1,10 @@
-var CONST_ES6_BUILD_PATH = './build/';
+var CONST_ES6_BUILD_PATH = "./build/";
 
-var _  = require('lodash');
-let React = require("react");
-let ReactDOM = require("react-dom");
-let injectTapEventPlugin = require("react-tap-event-plugin");
-let Header = require("./components/Header"); // Our custom react component
+var _ = require("lodash");
+var React = require("react");
+var ReactDOM = require("react-dom");
+var injectTapEventPlugin = require("react-tap-event-plugin");
+var Header = require("./build/react/Header"); // Our custom react component
 
 //Needed for React Developer Tools
 window.React = React;
@@ -17,4 +17,4 @@ injectTapEventPlugin();
 
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
-ReactDOM.render( < Header / > , document.getElementById("header"));
+ReactDOM.render( <Header /> , document.getElementById("header"));

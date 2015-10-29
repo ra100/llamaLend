@@ -12,17 +12,22 @@
 // Browserify task work before copying the files in the .tmp folder
 // so the path sould be something like .tmp/public/js/app.js
 // just change assets/ for .tmp/public/ and then the same path as always
-var browserifyMainFile = '.tmp/public/js/app.js';
+var browserifyMainFile = ".tmp/public/js/app.js";
+
+//This is the path which tyhe bablify task will look to for transcompiling ES6->ES5
+var es6To5SrcJSDir     = "api/components/es6+";
+var es6To5BuildPath    = "assets/js/build/";
+var appRootDir = browserifyMainFile.substring(0, browserifyMainFile.lastIndexOf("/"));
 
 // Path to public folder
-var tmpPath = '.tmp/public/';
+var tmpPath = ".tmp/public/";
 
 // CSS files to inject in order
 //
-// (if you're using LESS with the built-in default config, you'll want
+// (if you"re using LESS with the built-in default config, you"ll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  "styles/**/*.css"
 ];
 
 
@@ -31,31 +36,31 @@ var cssFilesToInject = [
 var jsFilesToInject = [
 
   // Load sails.io before everything else
-  'js/dependencies/sails.io.js',
+  "js/dependencies/sails.io.js",
 
   // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/**/*.js',
+  "js/dependencies/**/*.js",
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/**/*.js',
+  "js/**/*.js",
 
   // Use the "exclude" operator to ignore files
-  // '!js/ignore/these/files/*.js'
+  // "!js/ignore/these/files/*.js"
 ];
 
 
 // Client-side HTML templates are injected using the sources below
-// The ordering of these templates shouldn't matter.
+// The ordering of these templates shouldn"t matter.
 // (uses Grunt-style wildcard/glob/splat expressions)
 //
 // By default, Sails uses JST templates and precompiles them into
 // functions for you.  If you want to use jade, handlebars, dust, etc.,
-// with the linker, no problem-- you'll just want to make sure the precompiled
+// with the linker, no problem-- you"ll just want to make sure the precompiled
 // templates get spit out to the same file.  Be sure and check out `tasks/README.md`
 // for information on customizing and installing new tasks.
 var templateFilesToInject = [
-  'templates/**/*.html'
+  "templates/**/*.html"
 ];
 
 
@@ -67,9 +72,12 @@ module.exports.cssFilesToInject = cssFilesToInject.map(transformPath);
 module.exports.jsFilesToInject = jsFilesToInject.map(transformPath);
 module.exports.templateFilesToInject = templateFilesToInject.map(transformPath);
 module.exports.browserifyMainFile = browserifyMainFile;
+module.exports.es6To5SrcJSDir = es6To5SrcJSDir;
+module.exports.es6To5BuildPath = es6To5BuildPath;
+module.exports.appRootDir = appRootDir;
 
 // Transform paths relative to the "assets" folder to be relative to the public
 // folder, preserving "exclude" operators.
 function transformPath(path) {
-    return (path.substring(0, 1) == '!') ? ('!' + tmpPath + path.substring(1)) : (tmpPath + path);
+    return (path.substring(0, 1) == "!") ? ("!" + tmpPath + path.substring(1)) : (tmpPath + path);
 }
