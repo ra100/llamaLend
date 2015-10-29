@@ -3,8 +3,6 @@ module.exports = function (grunt) {
 		"jst:dev",
 		"sass:dev",
 		"sync:dev",
-		"coffee:dev",
-		"react:dev",
-		"browserify"
+		"coffee:dev"
 	]);
 };

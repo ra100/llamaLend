@@ -1,5 +1,6 @@
-"use strict";
+var CONST_ES6_BUILD_PATH = './build/';
 
+var _  = require('lodash');
 let React = require("react");
 let ReactDOM = require("react-dom");
 let injectTapEventPlugin = require("react-tap-event-plugin");

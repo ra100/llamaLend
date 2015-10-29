@@ -5,7 +5,8 @@ module.exports = function (grunt) {
 		"sass:dev",
 		"browserify",
 		"copy:dev",
-		"coffee:dev",
-		"react:dev"
+		"babelBuild",
+    	"browserify",
+		"coffee:dev"
 	]);
 };

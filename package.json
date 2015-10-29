@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "babel": "^5.8.29",
     "bcrypt": "^0.8.5",
     "bson": "^0.4.19",
     "connect-mongo": "^0.4.1",
