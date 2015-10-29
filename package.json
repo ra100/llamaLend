@@ -55,5 +55,8 @@
     "url": "git://github.com/ra100/llamaLent.git"
   },
   "author": "ra100",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "grunt-es6-transpiler": "^1.0.2"
+  }
 }

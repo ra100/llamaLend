@@ -1,19 +1,15 @@
 /** In this file, we create a React component which incorporates components provided by material-ui */
+// import React from "react";
 "use strict";
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
+var React = require("react");
 var AppBar = require("material-ui/lib/app-bar");
 
-var Header = _react2["default"].createClass({
+var Header = React.createClass({
   displayName: "Header",
 
   render: function render() {
-    return _react2["default"].createElement(AppBar, { title: "LlamaLend", iconClassNameRight: "muidocs-icon-navigation-expand-more" });
+    return React.createElement(AppBar, { title: "LlamaLend", iconClassNameRight: "muidocs-icon-navigation-expand-more" });
   }
 });
 
