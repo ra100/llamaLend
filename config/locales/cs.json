@@ -1,1 +1,5 @@
-{}
+{
+	"login.userName": "Username",
+	"login.password": "password",
+	"login.socialNetworks": "Login via social networks"
+}

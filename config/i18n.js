@@ -23,18 +23,18 @@ module.exports.i18n = {
   *                                                                          *
   ***************************************************************************/
 
-  locales: ['en', 'cs', 'sk'],
+  locales: ["en", "cs", "sk"],
 
   /****************************************************************************
   *                                                                           *
   * What is the default locale for the site? Note that this setting will be   *
   * overridden for any request that sends an "Accept-Language" header (i.e.   *
-  * most browsers), but it's still useful if you need to localize the         *
+  * most browsers), but it"s still useful if you need to localize the         *
   * response for requests made by non-browser clients (e.g. cURL).            *
   *                                                                           *
   ****************************************************************************/
 
-  defaultLocale: 'en',
+  defaultLocale: "en",
 
   /****************************************************************************
   *                                                                           *
@@ -52,6 +52,8 @@ module.exports.i18n = {
   *                                                                           *
   ****************************************************************************/
 
-  localesDirectory: '/config/locales'
+  localesDirectory: "/config/locales",
+
+  cookie: "language"
 
 };

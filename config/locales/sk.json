@@ -1,1 +1,5 @@
-{}
+{
+	"login.userName": "Prihlasovacie meno",
+	"login.password": "heslo",
+	"login.socialNetworks": "Prihlás sa cez sociálne siete"
+}

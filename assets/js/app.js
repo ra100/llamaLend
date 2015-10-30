@@ -1,11 +1,16 @@
-var _ = require("lodash");
+// var _ = require("lodash");
 var React = require("react");
 var ReactDOM = require("react-dom");
 var injectTapEventPlugin = require("react-tap-event-plugin");
 var Header = require("./build/react/Header"); // Our custom react component
+var LoginForm = require("./build/react/LoginForm");
 
 //Needed for React Developer Tools
 window.React = React;
+
+var socket = io.connect();
+
+console.log(socket);
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -16,3 +21,4 @@ injectTapEventPlugin();
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
 ReactDOM.render(<Header/>, document.getElementById("header"));
+ReactDOM.render(<LoginForm/>, document.getElementById("app"));
