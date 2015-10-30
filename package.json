@@ -6,7 +6,7 @@
   "keywords": [],
   "dependencies": {
     "babel": "^5.8.29",
-    "bcrypt": "^0.8.5",
+    "bcryptjs": "^2.3.0",
     "bson": "^0.4.19",
     "connect-mongo": "^0.4.1",
     "ejs": "~0.8.4",
