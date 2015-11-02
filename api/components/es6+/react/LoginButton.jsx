@@ -7,13 +7,13 @@ import Theme from "./Theme";
 
 const LoginButton = React.createClass({
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext () {
-    return {muiTheme: ThemeManager.getMuiTheme(Theme)};
-  },
+  // childContextTypes: {
+  //   muiTheme: React.PropTypes.object
+  // },
+  //
+  // getChildContext () {
+  //   return {muiTheme: ThemeManager.getMuiTheme(Theme)};
+  // },
 
   text: {
     login: "login"
