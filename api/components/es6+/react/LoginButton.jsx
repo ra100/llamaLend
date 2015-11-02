@@ -1,9 +1,9 @@
-"use strict";
+import React from 'react';
+import i18n from "i18n";
+import {FlatButton} from "material-ui";
+import ThemeManager from "material-ui/lib/styles/theme-manager";
+import Theme from "./Theme";
 
-const React = require("react");
-const ThemeManager = require("material-ui/lib/styles/theme-manager");
-const Theme = require("./Theme");
-const FlatButton = require("material-ui/lib/flat-button");
 
 const LoginButton = React.createClass({
 
@@ -11,17 +11,15 @@ const LoginButton = React.createClass({
     muiTheme: React.PropTypes.object
   },
 
-  getChildContext() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(Theme)
-    };
+  getChildContext () {
+    return {muiTheme: ThemeManager.getMuiTheme(Theme)};
   },
 
   text: {
     login: "login"
   },
 
-  render: function () {
+  render: function() {
     return (
       <FlatButton label={this.text.login}/>
     );
