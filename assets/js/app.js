@@ -2,20 +2,7 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 var injectTapEventPlugin = require("react-tap-event-plugin");
-var Header = require("./build/react/Header"); // Our custom react component
-var LoginForm = require("./build/react/LoginForm");
-// var i18n = require("i18n");
-// require('fs');
-//
-// console.log(i18n);
-//
-// i18n.configure({
-//     locales: ["en", "cs", "sk"],
-//     directory: "/locales",
-//     locale: "en",
-//     defaultLocale: "en",
-//     cookie: "language"
-// });
+var App = require("./build/react/App"); // Our custom react component
 
 //Needed for React Developer Tools
 window.React = React;
@@ -32,5 +19,4 @@ injectTapEventPlugin();
 
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
-ReactDOM.render(<Header/>, document.getElementById("header"));
-ReactDOM.render(<LoginForm/>, document.getElementById("app"));
+ReactDOM.render(<App locales={['en-US']} />, document.getElementById("app"));
