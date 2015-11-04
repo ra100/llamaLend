@@ -2,7 +2,7 @@
  * localize
  *
  * @module      :: Policy
- * @description :: sets language for request
+ * @description :: Sets language from cookie
  * @docs        :: http://sailsjs.org/#!/documentation/concepts/Policies
  *
  */

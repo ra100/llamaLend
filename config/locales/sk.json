@@ -2,6 +2,7 @@
 	"login.userName": "Prihlasovacie meno",
 	"login.password": "heslo",
 	"login.socialNetworks": "Prihlás sa cez sociálne siete",
-	"locale.ok": "locale.ok",
-	"locale.notChanged": "locale.notChanged"
+	"locale.notChanged": "locale.notChanged",
+	"locale.invalid": "locale.invalid",
+	"locale.ok": "locale.ok"
 }

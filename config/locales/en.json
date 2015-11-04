@@ -3,5 +3,6 @@
 	"login.password": "password",
 	"login.socialNetworks": "Login via social networks",
 	"locale.notChanged": "locale.notChanged",
-	"locale.invalid": "locale.invalid"
+	"locale.invalid": "locale.invalid",
+	"locale.ok": "locale.ok"
 }

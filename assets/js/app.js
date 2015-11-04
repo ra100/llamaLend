@@ -11,6 +11,9 @@ window.React = React;
 //
 // console.log(socket);
 
+var language = readCookie("language");
+console.log(language);
+
 //Needed for onTouchTap
 //Can go away when react 1.0 release
 //Check this repo:
@@ -21,12 +24,14 @@ injectTapEventPlugin();
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
 ReactDOM.render(<App/>, document.getElementById("app"));
 
-var oReq = new XMLHttpRequest();
-oReq.onload = reqListener;
-oReq.open("get", "/languages/get", true);
-oReq.send();
-
-function reqListener(e) {
-    data = JSON.parse(this.responseText);
-    console.log(data);
+/**
+ * Read cookie value
+ * @param  {string} name cookie name
+ * @return {string}      cookie value
+ */
+function readCookie(name) {
+    name = name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
+    var regex = new RegExp('(?:^|;)\\s?' + name + '=(.*?)(?:;|$)','i'),
+        match = document.cookie.match(regex);
+    return match && unescape(match[1]);
 }
