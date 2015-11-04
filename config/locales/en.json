@@ -1,5 +1,7 @@
 {
 	"login.userName": "Username",
 	"login.password": "password",
-	"login.socialNetworks": "Login via social networks"
+	"login.socialNetworks": "Login via social networks",
+	"locale.notChanged": "locale.notChanged",
+	"locale.invalid": "locale.invalid"
 }

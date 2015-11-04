@@ -19,4 +19,14 @@ injectTapEventPlugin();
 
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
-ReactDOM.render(<App locales={['en-US']} />, document.getElementById("app"));
+ReactDOM.render(<App/>, document.getElementById("app"));
+
+var oReq = new XMLHttpRequest();
+oReq.onload = reqListener;
+oReq.open("get", "/languages/get", true);
+oReq.send();
+
+function reqListener(e) {
+    data = JSON.parse(this.responseText);
+    console.log(data);
+}
