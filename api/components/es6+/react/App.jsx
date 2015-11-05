@@ -3,10 +3,10 @@ import {IntlMixin, FormattedDate} from "react-intl";
 import ThemeManager from "material-ui/lib/styles/theme-manager";
 import Theme from "./Theme";
 import Header from "./Header";
-import LoginForm from "./LoginForm";
+import LoginButton from "./LoginButton";
 
 const App = React.createClass({
-  mixins: [IntlMixin], childContextTypes: {
+  childContextTypes: {
     muiTheme: React.PropTypes.object
   },
 
@@ -16,12 +16,8 @@ const App = React.createClass({
 
   render () {
     return (
-      <div>
-        <div id="header"><Header/></div>
-        <div id="body"><LoginForm/></div>
-      </div>
+      <div id="header"><Header/><LoginButton/></div>
     );
-    // <FormattedDate value={1446561681} style="numeric" locales={['en-US']}/>
   }
 });
 
