@@ -18,7 +18,7 @@ module.exports = function (grunt) {
         react: {
 
             // API files to watch:
-            files: ["api/**/*.jsx"],
+            files: ["api/**/*.jsx", "assets/js/app.jsx"],
             tasks: ["babelBuild"]
         },
         assets: {
