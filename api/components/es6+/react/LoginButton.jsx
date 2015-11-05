@@ -16,13 +16,13 @@ class LoginButton extends React.Component {
   render () {
     return (
       <div>
-        <FlatButton label={<FormattedMessage {...messages.login} onTouchTap={this._handleTouchTap}/>}/>
+        <FlatButton label={<FormattedMessage {...messages.login} onTouchTap={this.handleTouchTap}/>}/>
         <LoginForm ref="loginForm"/>
       </div>
     );
   }
 
-  _handleTouchTap () {
+  handleTouchTap () {
     console.log("tap fap tap");
     console.log(this.refs);
     this.refs

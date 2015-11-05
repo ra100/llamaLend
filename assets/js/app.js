@@ -36,10 +36,10 @@ ReactDOM.render(React.createElement(
 ), document.getElementById("app"));
 
 /**
-     * Read cookie value
-     * @param  {string} name cookie name
-     * @return {string}      cookie value
-     */
+ * Read cookie value
+ * @param  {string} name cookie name
+ * @return {string}      cookie value
+ */
 function readCookie(name) {
   name = name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
   var regex = new RegExp('(?:^|;)\\s?' + name + '=(.*?)(?:;|$)', 'i'),
