@@ -43,6 +43,7 @@ config/local.js
 www
 assets/js/build
 assets/js/build/*
+aseests/js/app.js
 
 
 

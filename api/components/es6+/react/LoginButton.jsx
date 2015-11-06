@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import ReactDOM from "react-dom";
 import i18n from "i18n";
 import {FlatButton} from "material-ui";
 import {FormattedMessage, defineMessages} from "react-intl";
@@ -13,21 +14,23 @@ const messages = defineMessages({
 });
 
 class LoginButton extends React.Component {
+  openModal () {
+    this.refs
+      .loginForm
+      .refs
+      .wrappedElement
+      .show();
+  }
+
   render () {
     return (
       <div>
-        <FlatButton label={<FormattedMessage {...messages.login} onTouchTap={this.handleTouchTap}/>}/>
+        <FlatButton label={<FormattedMessage {...messages.login}/>} onTouchTap={this
+          .openModal
+          .bind(this)}/>
         <LoginForm ref="loginForm"/>
       </div>
     );
-  }
-
-  handleTouchTap () {
-    console.log("tap fap tap");
-    console.log(this.refs);
-    this.refs
-      .loginForm
-      .show();
   }
 };
 

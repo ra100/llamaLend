@@ -15,6 +15,9 @@ window.React = React;
 // console.log(socket);
 
 var language = readCookie("language");
+if (language == "") {
+  language = "en";
+}
 var langs = {
   en: require("./locales/en"),
   cs: require("./locales/cs"),

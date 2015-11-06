@@ -13,6 +13,9 @@ window.React = React;
 // console.log(socket);
 
 let language = readCookie("language");
+if (language == "") {
+  language = "en";
+}
 let langs = {
   en: require("./locales/en"),
   cs: require("./locales/cs"),
@@ -28,7 +31,7 @@ injectTapEventPlugin();
 // Render the main app react component into the app div.
 // For more details see: https://facebook.github.io/react/docs/top-level-api.html#react.render
 ReactDOM.render(
-  <IntlProvider locale ={language} messages= {langs[language].messages}>
+  <IntlProvider locale={language} messages={langs[language].messages}>
   <App/>
 </IntlProvider>, document.getElementById("app"));
 
