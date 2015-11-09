@@ -2,6 +2,7 @@ import React from "react";
 import i18n from "i18n";
 import {TextField, Dialog, FlatButton} from "material-ui";
 import {defineMessages, FormattedMessage, injectIntl} from "react-intl";
+import {$} from "zepto-browserify";
 
 const messages = defineMessages({
   userName: {
@@ -100,8 +101,17 @@ class LoginForm extends React.Component {
       this.state.errorTextPassword = formatMessage(messages.loginErrorWrongPassword);
       this._updateErrors();
     } else {
-      console.log("TODO: waterlock-local-auth");
+      this._auth();
+    //   console.log("TODO: waterlock-local-auth");
     }
+  }
+
+  _auth() {
+    let login = this.state.login,
+    password = this.state.password;
+    $.post("/auth/login", {email: login, password: password}, function(data) {
+      console.log(data);
+    });
   }
 
   /**

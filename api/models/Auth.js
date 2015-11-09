@@ -22,17 +22,17 @@ module.exports = {
     timezone: {
       type: 'string'
     },
-    email: {
-      type: 'email',
-      unique: true
-    },
-    password: {
-      type: 'STRING',
-      minLength: 8
-    },
-    resetToken: {
-      model: 'resetToken'
-    }
+    // email: {
+    //   type: 'email',
+    //   unique: true
+    // },
+    // password: {
+    //   type: 'STRING',
+    //   minLength: 8
+    // },
+    // resetToken: {
+    //   model: 'resetToken'
+    // }
 
   }),
 

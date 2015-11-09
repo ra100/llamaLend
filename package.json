@@ -47,7 +47,9 @@
     "waterlock": "^0.1.0",
     "waterlock-facebook-auth": "0.0.3",
     "waterlock-google-auth": "0.0.1",
-    "waterlock-local-auth": "0.0.6"
+    "waterlock-local-auth": "0.0.6",
+    "zepto": "0.0.4",
+    "zepto-browserify": "^1.1.6-1"
   },
   "scripts": {
     "debug": "node debug app.js",
