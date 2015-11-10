@@ -1,0 +1,9 @@
+{
+  "plugins": ["react-intl"],
+  "extra": {
+    "react-intl": {
+        "messagesDir": "./assets/js/locales/",
+        "enforceDescriptions": true
+    }
+  }
+}
