@@ -1,8 +1,18 @@
 import React from "react";
 import i18n from "i18n";
-import {TextField, Dialog, FlatButton} from "material-ui";
-import {defineMessages, FormattedMessage, injectIntl} from "react-intl";
-import {$} from "zepto-browserify";
+import {
+  TextField,
+  Dialog,
+  FlatButton
+} from "material-ui";
+import {
+  defineMessages,
+  FormattedMessage,
+  injectIntl
+} from "react-intl";
+import {
+  $
+} from "zepto-browserify";
 
 const messages = defineMessages({
   userName: {
@@ -30,25 +40,30 @@ const messages = defineMessages({
     description: "Login button on form",
     defaultMessage: "Login"
   },
+  register: {
+    id: "registerButton",
+    description: "Register button on form",
+    defaultMessage: "Register"
+  },
   loginErrorNoLogin: {
     id: "loginErrorNoLogin",
     description: "when no login or too short is entered",
-    defaultMessage: "Please, enter your username"
+    defaultMessage: "Please, type username or email"
   },
   loginErrorNoPassword: {
     id: "loginErrorNoPassword",
     description: "when no password or too short is entered",
-    defaultMessage: "Please, enter your password"
+    defaultMessage: "Please, type password"
   },
   loginErrorUserNotFound: {
     id: "loginErrorUserNotFound",
     description: "When username not found",
     defaultMessage: "Username or email not found"
   },
-  loginErrorWrongPassword: {
-    id: "loginErrorWrongPassword",
-    description: "When password doesn't match username",
-    defaultMessage: "Wrong password"
+  loginErrorShortPassword: {
+    id: "loginErrorShortPassword",
+    description: "When password is too short",
+    defaultMessage: "Password too short"
   }
 });
 
@@ -93,25 +108,55 @@ class LoginForm extends React.Component {
   _checkCredentials () {
     let user = this.state.login;
     let pwd = this.state.password;
-    const {formatMessage} = this.props.intl;
+    const {
+      formatMessage
+    } = this.props.intl;
     if (user.length < 3) {
       this.state.errorTextLogin = formatMessage(messages.loginErrorUserNotFound);
       this._updateErrors();
     } else if (pwd.length < 8) {
-      this.state.errorTextPassword = formatMessage(messages.loginErrorWrongPassword);
+      this.state.errorTextPassword = formatMessage(messages.loginErrorShortPassword);
       this._updateErrors();
     } else {
       this._auth();
-    //   console.log("TODO: waterlock-local-auth");
     }
   }
 
-  _auth() {
+  _auth () {
+    let _this = this;
     let login = this.state.login,
-    password = this.state.password;
-    $.post("/auth/login", {email: login, password: password}, function(data) {
-      console.log(data);
+      payload = {
+        password: this.state.password,
+        _csrf: this._csrf(),
+        type: "local"
+      };
+    if (login.indexOf("@") < 0) {
+      payload.username = login;
+    } else {
+      payload.email = login;
+    }
+    $.ajax({
+      type: "POST",
+      url: "/auths/login",
+      data: payload,
+      success: function(data, status, xhr) {
+        console.log(data);
+      },
+      error: function(data, status, xhr) {
+        let message = JSON.parse(data.response);
+        let target = message.target;
+        if (target == undefined) {
+          target = "Password";
+        }
+        _this.state["errorText" + target] = message.error;
+        _this._updateErrors();
+        console.log(message);
+      }
     });
+  }
+
+  _csrf () {
+    return window._csrf;
   }
 
   /**
@@ -120,11 +165,11 @@ class LoginForm extends React.Component {
  */
   _checkLogin () {
     if (this.state.login == null || this.state.login == "") {
-      const {formatMessage} = this.props.intl;
+      const {
+        formatMessage
+      } = this.props.intl;
       this.state.errorTextLogin = formatMessage(messages.loginErrorNoLogin);
-      this.refs
-        .inputLogin
-        .focus();
+      this.refs.inputLogin.focus();
     } else {
       this.state.errorTextLogin = "";
     }
@@ -137,11 +182,11 @@ class LoginForm extends React.Component {
  */
   _checkPassword () {
     if (this.state.password == null || this.state.password == "") {
-      const {formatMessage} = this.props.intl;
+      const {
+        formatMessage
+      } = this.props.intl;
       this.state.errorTextPassword = formatMessage(messages.loginErrorNoPassword);
-      this.refs
-        .inputPassword
-        .focus();
+      this.refs.inputPassword.focus();
     } else {
       this.state.errorTextPassword = "";
     }
@@ -153,12 +198,8 @@ class LoginForm extends React.Component {
  * @return {[type]} [description]
  */
   _updateErrors () {
-    this.refs
-      .inputLogin
-      .setErrorText(this.state.errorTextLogin);
-    this.refs
-      .inputPassword
-      .setErrorText(this.state.errorTextPassword);
+    this.refs.inputLogin.setErrorText(this.state.errorTextLogin);
+    this.refs.inputPassword.setErrorText(this.state.errorTextPassword);
   }
 
   /**
@@ -167,9 +208,7 @@ class LoginForm extends React.Component {
  * @return {[type]}       [description]
  */
   _handleLoginChange (event) {
-    this.state.login = event.target
-      .value
-      .trim();
+    this.state.login = event.target.value.trim();
     this._checkLogin();
   }
 
@@ -179,9 +218,7 @@ class LoginForm extends React.Component {
  * @return {[type]}       [description]
  */
   _handlePasswordChange (event) {
-    this.state.password = event.target
-      .value
-      .trim();
+    this.state.password = event.target.value.trim();
     this._checkPassword();
   }
 
@@ -190,9 +227,7 @@ class LoginForm extends React.Component {
  * @return {[type]} [description]
  */
   show () {
-    this.refs
-      .loginModal
-      .show();
+    this.refs.loginModal.setState({open: true});
   }
 
   /**
@@ -200,16 +235,20 @@ class LoginForm extends React.Component {
  * @return {[type]} [description]
  */
   dismiss () {
-    this.refs
-      .loginModal
-      .dismiss();
+    this.refs.loginModal.setState({open: false});
   }
 
   render () {
-    const {formatMessage} = this.props.intl;
+    const {
+      formatMessage
+    } = this.props.intl;
 
     let actionButtons = [
       {
+        text: formatMessage(messages.register),
+        onTouchTap: this._handleRegister,
+        ref: "register"
+      }, {
         text: formatMessage(messages.login),
         onTouchTap: this._handleSubmit,
         ref: "login"
@@ -220,7 +259,7 @@ class LoginForm extends React.Component {
 
     return (
       <Dialog title={formatMessage(messages.login)} actions={actionButtons} actionFocus="login" ref="loginModal" contentStyle={{
-        width: 300
+      width: 300
       }}>
         {login}
         <br/>

@@ -2,6 +2,10 @@
 	"login.userName": "Username",
 	"login.password": "password",
 	"login.socialNetworks": "Login via social networks",
+	"auth.invalid.login": "Invalid %s or password",
+	"auth.invalid.username": "User for email not found",
+	"auth.email": "email",
+	"auth.username": "username",
 	"locale.notChanged": "locale.notChanged",
 	"locale.invalid": "locale.invalid",
 	"locale.ok": "locale.ok"

@@ -6,10 +6,14 @@ var ReactDOM = require("react-dom");
 var IntlProvider = require("react-intl/lib/components/intl");
 var injectTapEventPlugin = require("react-tap-event-plugin");
 var App = require("./build/react/App"); // Our custom react component
+var $ = require("zepto-browserify").Zepto;
 
 //Needed for React Developer Tools
 window.React = React;
 
+// load csrf token
+window._csrf = $('meta[name="csrf-token"]').attr('content');
+var _csrf = $('meta[name="csrf-token"]').attr('content');
 // var socket = io.connect();
 //
 // console.log(socket);

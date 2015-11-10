@@ -4,10 +4,14 @@ let ReactDOM = require("react-dom");
 let IntlProvider = require("react-intl/lib/components/intl");
 let injectTapEventPlugin = require("react-tap-event-plugin");
 let App = require("./build/react/App"); // Our custom react component
+let $ = require("zepto-browserify").Zepto;
 
 //Needed for React Developer Tools
 window.React = React;
 
+// load csrf token
+window._csrf = $('meta[name="csrf-token"]').attr('content');
+let _csrf = $('meta[name="csrf-token"]').attr('content');
 // var socket = io.connect();
 //
 // console.log(socket);
@@ -43,7 +47,6 @@ ReactDOM.render(
 function readCookie(name) {
   name = name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
   var regex = new RegExp('(?:^|;)\\s?' + name + '=(.*?)(?:;|$)', 'i'),
-    match = document.cookie
-      .match(regex);
+    match = document.cookie.match(regex);
   return match && unescape(match[1]);
 }
