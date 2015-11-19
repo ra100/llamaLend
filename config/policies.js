@@ -26,16 +26,18 @@ module.exports.policies = {
    *                                                                          *
    ***************************************************************************/
 
-  '*': ["localize",
-      'basicAuth',
+  '*': [
+      "localize",
+      // 'basicAuth',
       'passport',
       'sessionAuth',
-      'ModelPolicy',
-      'AuditPolicy',
-      'OwnerPolicy',
-      'PermissionPolicy',
-      'RolePolicy',
-      'CriteriaPolicy'],
+      // 'ModelPolicy',
+      // 'AuditPolicy',
+      // 'OwnerPolicy',
+      // 'PermissionPolicy',
+      // 'RolePolicy',
+      // 'CriteriaPolicy'
+    ],
 
   "/auth/login": true,
 

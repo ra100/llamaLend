@@ -1,13 +1,27 @@
-/**
- * User
- *
- * @module      :: Model
- * @description :: This is the base user model
- * @docs        :: http://waterlock.ninja/documentation
- */
+var User = {
+  // Enforce model schema in the case of schemaless databases
+  schema: true,
 
-module.exports = {
   attributes: {
+    username: {
+      type: 'string',
+      unique: true
+    },
+
+    email: {
+      type: 'email',
+      unique: true
+    },
+
+    passports: {
+      collection: 'Passport',
+      via: 'user'
+    },
+
+    roles: {
+      collection: 'Role'
+    },
+
     id: {
       type: 'integer',
       unique: true,
@@ -15,7 +29,7 @@ module.exports = {
     },
 
     // display name
-    name: {
+    nick: {
       type: 'string',
       required: true
     },
@@ -26,12 +40,6 @@ module.exports = {
 
     lastName: {
       type: 'string'
-    },
-
-    // user email
-    email: {
-      type: 'string',
-      email: true
     },
 
     // images user uploaded
@@ -56,5 +64,7 @@ module.exports = {
       collection: 'Tool',
       via: 'location'
     }
-  },
+  }
 };
+
+module.exports = User;

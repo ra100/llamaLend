@@ -152,7 +152,7 @@ class LoginForm extends React.Component {
     }
     $.ajax({
       type: "POST",
-      url: "/auths/login",
+      url: "/auth/local",
       data: payload,
       success: function(data, status, xhr) {
         console.log(data);
@@ -189,7 +189,7 @@ class LoginForm extends React.Component {
     }
     $.ajax({
       type: "POST",
-      url: "/auths/register",
+      url: "/auth/local/register",
       data: payload,
       success: function(data, status, xhr) {
         console.log(data);
