@@ -43,5 +43,42 @@ module.exports = require("waterlock").waterlocked({
         }
       });
     }
+  },
+
+  register: function (req, res) {
+    var scope = require("waterlock-local-auth/lib/scope")(waterlock.Auth, waterlock.engine);
+    var params = req.params.all();
+
+    if (typeof params[scope.type] === 'undefined' || typeof params.password === 'undefined') {
+      waterlock.cycle.registerFailure(req, res, null, {
+        error: req.__("auth.invalid.login", req.__("auth." + scope.type)),
+        target: "Password"
+      });
+    } else {
+      var pass = params.password;
+
+      scope.registerUserAuthObject(params, req, function (err, user) {
+        if (err) {
+          res.serverError(err);
+        }
+        if (user) {
+          //NOTE: not sure we need to bother with bcrypt here?
+          if (bcrypt.compareSync(pass, user.auth.password)) {
+            waterlock.cycle.registerSuccess(req, res, user);
+          } else {
+            waterlock.cycle.registerFailure(req, res, user, {
+              error: req.__("auth.invalid.login", req.__("auth." + scope.type)),
+              target: "Password"
+            });
+          }
+        } else {
+          waterlock.cycle.registerFailure(req, res, null, {
+            error: req.__("auth.already.used", req.__("auth." + scope.type)),
+            target: "Login"
+          });
+        }
+      });
+
+    }
   }
 });

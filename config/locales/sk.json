@@ -1,12 +1,13 @@
 {
-	"login.userName": "Prihlasovacie meno",
-	"login.password": "heslo",
-	"login.socialNetworks": "Prihlás sa cez sociálne siete",
-	"auth.invalid.login": "Chybné %s alebo heslo",
-	"auth.invalid.user": "Používateľ k emailu sa nenašiel",
-	"auth.email": "email",
-	"auth.username": "používateľské meno",
-	"locale.notChanged": "locale.notChanged",
-	"locale.invalid": "locale.invalid",
-	"locale.ok": "locale.ok"
+  "login.userName": "Prihlasovacie meno",
+  "login.password": "heslo",
+  "login.socialNetworks": "Prihlás sa cez sociálne siete",
+  "auth.invalid.login": "Chybné %s alebo heslo",
+  "auth.invalid.user": "Používateľ k emailu sa nenašiel",
+  "auth.email": "email",
+  "auth.username": "používateľské meno",
+  "auth.already.used": "% is already in use",
+  "locale.notChanged": "locale.notChanged",
+  "locale.invalid": "locale.invalid",
+  "locale.ok": "locale.ok"
 }

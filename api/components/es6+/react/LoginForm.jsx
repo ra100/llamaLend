@@ -85,7 +85,7 @@ class LoginForm extends React.Component {
       errorTextLogin: "",
       errorTextPassword: ""
     };
-    this._bind("_handleSubmit", "_handleLoginChange", "_handlePasswordChange");
+    this._bind("_handleSubmit", "_handleLoginChange", "_handlePasswordChange", "_handleRegister");
   }
 
   _handleSubmit () {
@@ -98,7 +98,18 @@ class LoginForm extends React.Component {
     if (ok) {
       this._checkCredentials();
     };
-    // this.dismiss();
+  }
+
+  _handleRegister () {
+    this._checkLogin();
+    this._checkPassword();
+    let ok = true;
+    if (this.state.errorTextLogin != "" || this.state.errorTextPassword != "") {
+      ok = false;
+    }
+    if (ok) {
+      this._register();
+    }
   }
 
   /**
@@ -122,6 +133,10 @@ class LoginForm extends React.Component {
     }
   }
 
+  /**
+ * Check login credentials
+ * @return {[type]} [description]
+ */
   _auth () {
     let _this = this;
     let login = this.state.login,
@@ -138,6 +153,43 @@ class LoginForm extends React.Component {
     $.ajax({
       type: "POST",
       url: "/auths/login",
+      data: payload,
+      success: function(data, status, xhr) {
+        console.log(data);
+      },
+      error: function(data, status, xhr) {
+        let message = JSON.parse(data.response);
+        let target = message.target;
+        if (target == undefined) {
+          target = "Password";
+        }
+        _this.state["errorText" + target] = message.error;
+        _this._updateErrors();
+        console.log(message);
+      }
+    });
+  }
+
+  /**
+   * Create new account
+   * @return {[type]} [description]
+   */
+  _register () {
+    let _this = this;
+    let login = this.state.login,
+      payload = {
+        password: this.state.password,
+        _csrf: this._csrf(),
+        type: "local"
+      };
+    if (login.indexOf("@") < 0) {
+      payload.username = login;
+    } else {
+      payload.email = login;
+    }
+    $.ajax({
+      type: "POST",
+      url: "/auths/register",
       data: payload,
       success: function(data, status, xhr) {
         console.log(data);

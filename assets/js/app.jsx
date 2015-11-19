@@ -17,14 +17,14 @@ let _csrf = $('meta[name="csrf-token"]').attr('content');
 // console.log(socket);
 
 let language = readCookie("language");
-if (language == "") {
-  language = "en";
-}
 let langs = {
   en: require("./locales/en"),
   cs: require("./locales/cs"),
   sk: require("./locales/sk")
 };
+if (language == "" || langs[language] == undefined) {
+  language = "en";
+}
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
