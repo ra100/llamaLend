@@ -8,10 +8,10 @@
  * @docs        :: http://waterlock.ninja/documentation
  */
 
-module.exports = require('waterlock').actions.user({
+module.exports = {
   /* e.g.
     action: function(req, res){
 
     }
   */
-});
+};
